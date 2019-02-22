@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using AppTest.Model;
@@ -9,6 +10,7 @@ namespace AppTest.ViewModel
     public class ViewModelCategoryPage : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<ModelSqlite> ListItems { get; set; }
         public ICommand Add_category { protected set; get; }
         public INavigation Navigation { get; set; }
 
@@ -16,7 +18,8 @@ namespace AppTest.ViewModel
 
         public ViewModelCategoryPage()
         {
-            //itemList = new ModelItem();
+            //var t = App.Database.GetItems();
+            ListItems = new ObservableCollection<ModelSqlite>(App.Database.GetItems());
             Add_category = new Command(Add);
         }
 

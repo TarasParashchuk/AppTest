@@ -17,8 +17,12 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SqliteDB\" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using AppTest.SqliteDB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,6 +8,20 @@ namespace AppTest
 {
     public partial class App : Application
     {
+        public const string nameDB = "DBfsdfastest.db";
+        public static SqliteRepository database;
+        public static SqliteRepository Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new SqliteRepository(nameDB);
+                }
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();

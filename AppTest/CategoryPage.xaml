@@ -4,5 +4,15 @@
         <ToolbarItem Icon="outline_add.png" Command="{Binding Add_category}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <ListView x:Name="Category" ItemsSource="{Binding ListItems}"
+            CachingStrategy="RecycleElement"
+              SeparatorVisibility="None" 
+              HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding name_task}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>>
+            </ListView>
     </ContentPage.Content>
 </ContentPage>

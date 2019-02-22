@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using AppTest.ViewModel;
 using Xamarin.Forms;
 
 namespace AppTest
@@ -10,6 +10,7 @@ namespace AppTest
         public CreatePage()
         {
             InitializeComponent();
+            BindingContext = new ViewModelCreatePage() { Navigation = this.Navigation };
         }
     }
 }

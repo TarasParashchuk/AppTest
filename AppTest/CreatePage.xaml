@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppTest.CreatePage" Title="Создание">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="outline_save.png" />
+        <ToolbarItem Icon="outline_save.png" Command="{Binding SaveCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="5">
             <Label Text="Название задачи" FontSize="Medium" Font="Bold,20" />
-            <Entry x:Name="Name" />
+            <Entry x:Name="Name" Text="{Binding name_task}" />
             <Label Text="Описание" FontSize="Medium" Font="Bold,20" />
-            <Editor x:Name="Detail" />
+            <Editor x:Name="Detail" Text="{Binding detail_task}" />
             <Label Text="Время начала" FontSize="Medium" Font="Bold,20" />
             <StackLayout Orientation="Horizontal">
-                <DatePicker x:Name="Start_Date" />
-                <TimePicker x:Name="Start_Time" />
+                <DatePicker x:Name="Start_Date" Date="{Binding start_date}"/>
+                <TimePicker x:Name="Start_Time" Time="{Binding start_time}"/>
             </StackLayout>
             <Label Text="Время окончания" FontSize="Medium" Font="Bold,20" />
             <StackLayout Orientation="Horizontal">
-                <DatePicker x:Name="End_Date" />
-                <TimePicker x:Name="End_Time" />
+                <DatePicker x:Name="End_Date" Date="{Binding end_date}"/>
+                <TimePicker x:Name="End_Time" Time="{Binding end_time}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
