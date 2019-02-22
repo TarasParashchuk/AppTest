@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppTest" x:Class="AppTest.MainPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title="Главный экран">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="outline_add_alert.png" Command="{Binding AlertCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView x:Name="Item_list" ItemsSource="{Binding ListItems}"
+                  SelectedItem="{Binding Selected_Item, Mode=TwoWay}"
+              CachingStrategy="RecycleElement"
+              SeparatorVisibility="None" 
+              HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                        <ffSvg:SvgCachedImage Source="{Binding icon}" BackgroundColor="{Binding icon_bg}"
+                                                    WidthRequest="50" HeightRequest="50" VerticalOptions="Center">
+                                <ffSvg:SvgCachedImage.Transformations>  
+                                <ffTransformations:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="true"/>  
+                                <ffTransformations:RotateTransformation />
+                                </ffSvg:SvgCachedImage.Transformations> 
+                        </ffSvg:SvgCachedImage><Label Text="{Binding title}" FontSize="Medium" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

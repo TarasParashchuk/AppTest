@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppTest.CreatePage" Title="Создание">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="outline_save.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <Label Text="Название задачи" FontSize="Medium" Font="Bold,20" />
+            <Entry x:Name="Name" />
+            <Label Text="Описание" FontSize="Medium" Font="Bold,20" />
+            <Editor x:Name="Detail" />
+            <Label Text="Время начала" FontSize="Medium" Font="Bold,20" />
+            <StackLayout Orientation="Horizontal">
+                <DatePicker x:Name="Start_Date" />
+                <TimePicker x:Name="Start_Time" />
+            </StackLayout>
+            <Label Text="Время окончания" FontSize="Medium" Font="Bold,20" />
+            <StackLayout Orientation="Horizontal">
+                <DatePicker x:Name="End_Date" />
+                <TimePicker x:Name="End_Time" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
