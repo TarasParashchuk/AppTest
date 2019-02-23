@@ -16,35 +16,28 @@ namespace AppTest.SqliteDB
         {
             var databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(filename);
             database = new SQLiteConnection(databasePath);
-            database.CreateTable<ModelSqlite>();
+            database.CreateTable<ModelTask>();
+            database.CreateTable<ModelMessage>();
         }
 
-        public IEnumerable<ModelSqlite> GetItems()
+        public IEnumerable<T> GetItems<T>() where T : new()
         {
-            return (from i in database.Table<ModelSqlite>() select i).ToList();
+            return (from i in database.Table<T>() select i).ToList();
         }
 
-        public ModelSqlite GetItem(int id)
+        public T GetItem<T>(int id) where T : new()
         {
-            return database.Get<ModelSqlite>(id);
+            return database.Get<T>(id);
         }
 
-        public int DeleteItem(int id)
+        public int DeleteItem<T>(int id) where T : new()
         {
-            return database.Delete<ModelSqlite>(id);
+            return database.Delete<T>(id);
         }
 
-        public int SaveItem(ModelSqlite item)
+        public int SaveItem<T>(T item) where T : new()
         {
-            if (item.ID != 0)
-            {
-                database.Update(item);
-                return item.ID;
-            }
-            else
-            {
-                return database.Insert(item);
-            }
+            return database.Insert(item);
         }
     }
 }

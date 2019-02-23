@@ -1,5 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppTest.MessagePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  Icon="outline_delete.png" Command="{Binding DeleteCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="ListMessage" ItemsSource="{Binding ListItemsMessage}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <Image x:Name="IconMessage" Source="outline_document.png" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" BackgroundColor="Lime"/>
+                        <StackLayout>
+                            <Label x:Name="Title" Text="Создано новое задание" TextColor="Black" FontSize="Medium"/>
+                            <Label x:Name="Name_Task" Text="{Binding NameTask}" TextColor="Red" FontSize="Medium"/>
+                            <Label x:Name="Name_Category" Text="{Binding NameCategory}" TextColor="Gray"/>
+                        </StackLayout>
+                        <Label x:Name="Create_Time" Text="{Binding CreateTime}" TextColor="Silver" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
     <ContentPage.Content>
+        
     </ContentPage.Content>
 </ContentPage>

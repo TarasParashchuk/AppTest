@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using AppTest.ViewModel;
 using Xamarin.Forms;
 
 namespace AppTest
@@ -10,6 +10,12 @@ namespace AppTest
         public MessagePage()
         {
             InitializeComponent();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            BindingContext = new ViewModelMessage();
         }
     }
 }

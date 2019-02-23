@@ -11,7 +11,7 @@ namespace AppTest.ViewModel
     public class ViewModelCategoryPage : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<ModelSqlite> Items; 
+        public ObservableCollection<ModelTask> Items; 
         public ICommand Add_category { protected set; get; }
         public INavigation Navigation { get; set; }
         public string title;
@@ -19,11 +19,11 @@ namespace AppTest.ViewModel
         public ViewModelCategoryPage(string title)
         {
             this.title = title;
-            Items = new ObservableCollection<ModelSqlite>(App.Database.GetItems().Where(w => w.name_category == title).ToList());
+            Items = new ObservableCollection<ModelTask>(App.Database.GetItems<ModelTask>());//.Where(w => w.name_task == title).ToList());
             Add_category = new Command(Add);
         }
 
-        public ObservableCollection<ModelSqlite> ListItems
+        public ObservableCollection<ModelTask> ListItems
         {
             get { return Items; }
             set

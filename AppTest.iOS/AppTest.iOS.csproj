@@ -185,5 +185,9 @@
     <BundleResource Include="Resources\outline_add%402x.png" />
     <BundleResource Include="Resources\outline_save.png" />
     <BundleResource Include="Resources\outline_save%402x.png" />
+    <BundleResource Include="Resources\outline_delete.png" />
+    <BundleResource Include="Resources\outline_delete%402x.png" />
+    <BundleResource Include="Resources\outline_document.png" />
+    <BundleResource Include="Resources\outline_document%402x.png" />
   </ItemGroup>
 </Project>

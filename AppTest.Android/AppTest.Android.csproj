@@ -110,6 +110,14 @@
     <AndroidResource Include="Resources\drawable-xhdpi\outline_save.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\outline_save.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\outline_save.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\outline_delete.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\outline_document.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\outline_delete.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\outline_document.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\outline_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\outline_document.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\outline_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\outline_document.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

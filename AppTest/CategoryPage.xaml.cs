@@ -14,7 +14,6 @@ namespace AppTest
 
             this.Title = title;
             this.title = title;
-
         }
 
         protected override void OnAppearing()

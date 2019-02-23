@@ -11,23 +11,25 @@ namespace AppTest.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public INavigation Navigation { get; set; }
         public ICommand SaveCommand { protected set; get; }
-        public ModelSqlite task;
+        public ModelTask data_task;
+        public ModelMessage data_message;
 
         public ViewModelCreatePage(string name_category)
         {
-            task = new ModelSqlite();
-            task.name_category = name_category;
+            data_task = new ModelTask();
+            data_message = new ModelMessage();
+            data_message.name_category = name_category;
             SaveCommand = new Command(Save);
         }
 
         public string name_task
         {
-            get { return task.name_task; }
+            get { return data_task.name_task; }
             set
             {
-                if (task.name_task != value)
+                if (data_task.name_task != value)
                 {
-                    task.name_task = value;
+                    data_task.name_task = value;
                     OnPropertyChanged("name_task");
                 }
             }
@@ -35,12 +37,12 @@ namespace AppTest.ViewModel
 
         public string detail_task
         {
-            get { return task.detail_task; }
+            get { return data_task.detail_task; }
             set
             {
-                if (task.detail_task != value)
+                if (data_task.detail_task != value)
                 {
-                    task.detail_task = value;
+                    data_task.detail_task = value;
                     OnPropertyChanged("detail_task");
                 }
             }
@@ -48,12 +50,12 @@ namespace AppTest.ViewModel
 
         public string start_date
         {
-            get { return task.start_date; }
+            get { return data_task.start_date; }
             set
             {
-                if (task.start_date != value)
+                if (data_task.start_date != value)
                 {
-                    task.start_date = value;
+                    data_task.start_date = value;
                     OnPropertyChanged("start_date");
                 }
             }
@@ -61,12 +63,12 @@ namespace AppTest.ViewModel
 
         public string start_time
         {
-            get { return task.start_time; }
+            get { return data_task.start_time; }
             set
             {
-                if (task.start_time != value)
+                if (data_task.start_time != value)
                 {
-                    task.start_time = value;
+                    data_task.start_time = value;
                     OnPropertyChanged("start_time");
                 }
             }
@@ -74,12 +76,12 @@ namespace AppTest.ViewModel
 
         public string end_date
         {
-            get { return task.end_date; }
+            get { return data_task.end_date; }
             set
             {
-                if (task.end_date != value)
+                if (data_task.end_date != value)
                 {
-                    task.end_date = value;
+                    data_task.end_date = value;
                     OnPropertyChanged("end_date");
                 }
             }
@@ -87,34 +89,24 @@ namespace AppTest.ViewModel
 
         public string end_time
         {
-            get { return task.end_time; }
+            get { return data_task.end_time; }
             set
             {
-                if (task.end_time != value)
+                if (data_task.end_time != value)
                 {
-                    task.end_time = value;
+                    data_task.end_time = value;
                     OnPropertyChanged("end_time");
-                }
-            }
-        }
-
-        public string current_date
-        {
-            get { return task.current_date; }
-            set
-            {
-                if (task.current_date != value)
-                {
-                    task.current_date = DateTime.Now.ToShortDateString();
                 }
             }
         }
 
         private void Save()
         {
-            if (!String.IsNullOrEmpty(task.name_task))
+            if (!String.IsNullOrEmpty(data_task.name_task))
             {
-                App.Database.SaveItem(task);
+                App.Database.SaveItem(data_task);
+                data_message.current_date = DateTime.Now.ToString();
+                App.database.SaveItem(data_message);
             }
 
             Navigation.PopAsync();
