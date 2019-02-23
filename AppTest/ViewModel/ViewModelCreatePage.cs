@@ -13,9 +13,10 @@ namespace AppTest.ViewModel
         public ICommand SaveCommand { protected set; get; }
         public ModelSqlite task;
 
-        public ViewModelCreatePage()
+        public ViewModelCreatePage(string name_category)
         {
             task = new ModelSqlite();
+            task.name_category = name_category;
             SaveCommand = new Command(Save);
         }
 
@@ -97,13 +98,25 @@ namespace AppTest.ViewModel
             }
         }
 
+        public string current_date
+        {
+            get { return task.current_date; }
+            set
+            {
+                if (task.current_date != value)
+                {
+                    task.current_date = DateTime.Now.ToShortDateString();
+                }
+            }
+        }
+
         private void Save()
         {
-            //var task = (ModelSqlite)Navigation.BindingContext;
             if (!String.IsNullOrEmpty(task.name_task))
             {
                 App.Database.SaveItem(task);
             }
+
             Navigation.PopAsync();
         }
 

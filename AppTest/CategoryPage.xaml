@@ -10,7 +10,7 @@
               HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding name_task}"/>
+                    <TextCell Text="{Binding name_task}" TextColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>>
             </ListView>

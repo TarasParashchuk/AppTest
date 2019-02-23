@@ -8,7 +8,7 @@ namespace AppTest
 {
     public partial class App : Application
     {
-        public const string nameDB = "DBfsdfastest.db";
+        public const string nameDB = "DBfsdfasjnnvdccfjtest.db";
         public static SqliteRepository database;
         public static SqliteRepository Database
         {

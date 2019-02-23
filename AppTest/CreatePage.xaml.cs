@@ -7,10 +7,10 @@ namespace AppTest
 {
     public partial class CreatePage : ContentPage
     {
-        public CreatePage()
+        public CreatePage(string title)
         {
             InitializeComponent();
-            BindingContext = new ViewModelCreatePage() { Navigation = this.Navigation };
+            BindingContext = new ViewModelCreatePage(title) { Navigation = this.Navigation };
         }
     }
 }

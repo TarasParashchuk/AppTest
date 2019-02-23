@@ -7,12 +7,19 @@ namespace AppTest
 {
     public partial class CategoryPage : ContentPage
     {
+        public string title;
         public CategoryPage(string title)
         {
             InitializeComponent();
 
             this.Title = title;
-            BindingContext = new ViewModelCategoryPage() { Navigation = this.Navigation};
+            this.title = title;
+
+        }
+
+        protected override void OnAppearing()
+        {
+            this.BindingContext = new ViewModelCategoryPage(title) { Navigation = this.Navigation };
         }
     }
 }
