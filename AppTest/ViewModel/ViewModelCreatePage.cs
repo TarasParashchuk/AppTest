@@ -105,7 +105,7 @@ namespace AppTest.ViewModel
             if (!String.IsNullOrEmpty(data_task.name_task))
             {
                 App.Database.SaveItem(data_task);
-                data_message.current_date = DateTime.Now.ToString();
+                data_message.current_date = DateTime.Now.ToShortDateString();
                 App.database.SaveItem(data_message);
             }
 

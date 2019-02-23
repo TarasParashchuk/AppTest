@@ -3,19 +3,24 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem  Icon="outline_delete.png" Command="{Binding DeleteCommand}"/>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="ListMessage" ItemsSource="{Binding ListItemsMessage}">
+    <ListView x:Name="ListMessage" ItemsSource="{Binding ListItemsMessage}" CachingStrategy="RecycleElement"
+              SeparatorVisibility="None" 
+              HasUnevenRows="True"> 
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="10">
-                        <Image x:Name="IconMessage" Source="outline_document.png" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" BackgroundColor="Lime"/>
-                        <StackLayout>
-                            <Label x:Name="Title" Text="Создано новое задание" TextColor="Black" FontSize="Medium"/>
-                            <Label x:Name="Name_Task" Text="{Binding NameTask}" TextColor="Red" FontSize="Medium"/>
-                            <Label x:Name="Name_Category" Text="{Binding NameCategory}" TextColor="Gray"/>
+                    <RelativeLayout Padding="10">
+                        <Image x:Name="IconMessage" Source="outline_document.png" VerticalOptions="Center" HeightRequest="70" WidthRequest="70" BackgroundColor="Teal"
+                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=5}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0, Constant=5}"/>
+                        <StackLayout Padding="10" RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = .2}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}">
+                            <Label x:Name="Title" Text="Создано новое задание" TextColor="Black" FontSize="Default"/>
+                            <Label x:Name="Name_Task" Text="{Binding id_task}" TextColor="Red" FontSize="Default"/>
+                            <Label x:Name="Name_Category" Text="{Binding name_category}" TextColor="Gray"/>
                         </StackLayout>
-                        <Label x:Name="Create_Time" Text="{Binding CreateTime}" TextColor="Silver" HorizontalOptions="Center"/>
-                    </StackLayout>
+                        <Label x:Name="Create_Time" Text="{Binding current_date }" TextColor="Silver" FontSize="Small" RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = .7}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}"/>
+                    </RelativeLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
