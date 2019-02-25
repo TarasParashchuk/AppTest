@@ -10,7 +10,6 @@ namespace AppTest
         public MessagePage()
         {
             InitializeComponent();
-
         }
 
         protected override void OnAppearing()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using AppTest.Model;
@@ -105,7 +106,12 @@ namespace AppTest.ViewModel
             if (!String.IsNullOrEmpty(data_task.name_task))
             {
                 App.Database.SaveItem(data_task);
-                data_message.current_date = DateTime.Now.ToShortDateString();
+
+                var last_item = App.Database.GetLast<ModelTask>();
+                data_message.name_task = last_item.name_task;
+
+                var date_time = DateTime.Now;
+                data_message.current_date = date_time.ToShortDateString() + "\n" + date_time.ToShortTimeString();
                 App.database.SaveItem(data_message);
             }
 

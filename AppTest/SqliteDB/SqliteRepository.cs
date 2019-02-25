@@ -20,7 +20,7 @@ namespace AppTest.SqliteDB
             database.CreateTable<ModelMessage>();
         }
 
-        public IEnumerable<T> GetItems<T>() where T : new()
+        public List<T> GetItems<T>() where T : new()
         {
             return (from i in database.Table<T>() select i).ToList();
         }
@@ -30,9 +30,19 @@ namespace AppTest.SqliteDB
             return database.Get<T>(id);
         }
 
+        public T GetLast<T>() where T : new()
+        {
+            return database.Table<T>().Last();
+        }
+
         public int DeleteItem<T>(int id) where T : new()
         {
             return database.Delete<T>(id);
+        }
+
+        public void DeleteAll<T>() where T : new()
+        {
+            database.DeleteAll<T>();
         }
 
         public int SaveItem<T>(T item) where T : new()

@@ -8,7 +8,7 @@ namespace AppTest.Model
         [PrimaryKey, AutoIncrement, Column("ID")]
         public int ID { get; set; }
 
-        public int id_task { get; set; }
+        public string name_task { get; set; }
         public string current_date { get; set; }
         public string name_category { get; set; }
     }

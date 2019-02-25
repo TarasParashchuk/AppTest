@@ -17,14 +17,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                        <ffSvg:SvgCachedImage Source="{Binding icon}" BackgroundColor="{Binding icon_bg}"
-                                                    WidthRequest="50" HeightRequest="50" VerticalOptions="Center">
-                                <ffSvg:SvgCachedImage.Transformations>  
-                                <ffTransformations:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="true"/>  
-                                <ffTransformations:RotateTransformation />
-                                </ffSvg:SvgCachedImage.Transformations> 
-                        </ffSvg:SvgCachedImage><Label Text="{Binding title}" FontSize="Medium" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Frame HasShadow="false" CornerRadius="33" HeightRequest="66" WidthRequest="66" Margin="0" Padding="0" BackgroundColor="{Binding icon_bg}" >
+                                <ffSvg:SvgCachedImage Source="{Binding icon}" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Label Text="{Binding title}" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

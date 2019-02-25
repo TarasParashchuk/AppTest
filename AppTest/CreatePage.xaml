@@ -4,6 +4,7 @@
         <ToolbarItem Icon="outline_save.png" Command="{Binding SaveCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="5">
             <Label Text="Название задачи" FontSize="Medium" Font="Bold,20" />
             <Entry x:Name="Name" Text="{Binding name_task}" />
@@ -20,5 +21,6 @@
                 <TimePicker x:Name="End_Time" Time="{Binding end_time}" />
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

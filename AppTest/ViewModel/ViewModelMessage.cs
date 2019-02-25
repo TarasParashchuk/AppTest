@@ -30,10 +30,18 @@ namespace AppTest.ViewModel
             }
         }
 
-        public void Delete()
+        public async void Delete()
         {
-            Items = null;
-            OnPropertyChanged("ListItemsMessage");
+            var resault = await Application.Current.MainPage.DisplayAlert("Удаление уведомлений", "Вы точно желаете удалить все уведомления?", "OK", "Отмена");
+
+            if(resault)
+            {
+                App.Database.DeleteAll<ModelMessage>();
+
+                ListItemsMessage.Clear();
+                OnPropertyChanged("ListItemsMessage");
+            }
+
         }
 
         protected void OnPropertyChanged(string name)
