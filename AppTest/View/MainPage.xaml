@@ -4,13 +4,17 @@
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              Title="Главный экран">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="outline_add_alert.png" Command="{Binding AlertCommand}"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView x:Name="Item_list" ItemsSource="{Binding ListItems}"
-                  SelectedItem="{Binding Selected_Item, Mode=TwoWay}"
+        <ListView x:Name="Item_list" ItemsSource="{Binding ListItemsMainPage}"
+              SelectedItem="{Binding Selected_Item, Mode=TwoWay}"
+               IsPullToRefreshEnabled="true"
+              RefreshCommand="{Binding RefreshingCommand}"
+              IsRefreshing="{Binding isRefreshing,Mode=OneWay}"
               CachingStrategy="RecycleElement"
               SeparatorVisibility="None" 
               HasUnevenRows="True">
@@ -19,7 +23,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <Frame HasShadow="false" CornerRadius="33" HeightRequest="66" WidthRequest="66" Margin="0" Padding="0" BackgroundColor="{Binding icon_bg}" >
-                                <ffSvg:SvgCachedImage Source="{Binding icon}" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <local:TintedCachedImage Source="{Binding icon}" TintColor="{Binding icon_fg}" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
                             </Frame>
                             <Label Text="{Binding title}" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
                         </StackLayout>

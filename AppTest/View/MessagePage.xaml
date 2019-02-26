@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppTest.MessagePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppTest.MessagePage" Title="Уведомления">
     <ContentPage.ToolbarItems>
         <ToolbarItem  Icon="outline_delete.png" Command="{Binding DeleteCommand}"/>
     </ContentPage.ToolbarItems>
     <ListView x:Name="ListMessage" ItemsSource="{Binding ListItemsMessage}" CachingStrategy="RecycleElement"
-              SeparatorVisibility="None" 
-              HasUnevenRows="True"> 
+              SeparatorVisibility="None" RowHeight = "-1" SelectionMode="None"
+              HasUnevenRows="True" > 
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <RelativeLayout Padding="4"> 
-                        <Frame HasShadow="false" BackgroundColor="#2ECC71" CornerRadius="40" RelativeLayout.WidthConstraint="80" RelativeLayout.HeightConstraint="80" Margin="0" Padding="0"
+                    <RelativeLayout Padding="5"> 
+                        <Frame HasShadow="false" BackgroundColor="#2ECC71" CornerRadius="39" RelativeLayout.WidthConstraint="78" RelativeLayout.HeightConstraint="78" Margin="0" Padding="0"
                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=5}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0, Constant=5}">
                         <Image x:Name="IconMessage" Source="outline_document.png" VerticalOptions="Center"/>
                         </Frame>
-                        <StackLayout VerticalOptions="Center" Padding="5"
-                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.5}"
-                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="5"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor= 0.5}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.05}"                     
                 RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 0, Constant= 90 }"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}">
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = .1 }">
                             <Label x:Name="Title" Text="Создано новое задание" TextColor="Black" FontSize="Default"/>
                             <Label x:Name="Name_Task" Text="{Binding name_task}" TextColor="Red" FontSize="Default"/>
                             <Label x:Name="Name_Category" Text="{Binding name_category}" TextColor="Gray"/>
                         </StackLayout>
-                        <Label x:Name="Create_Time" Text="{Binding current_date }" Margin="5" TextColor="Gray" FontSize="Default" RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1, Constant=-100}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}"/>
+                        <Label x:Name="Create_Time" Margin="5" Text="{Binding current_date }" HorizontalTextAlignment="End" TextColor="Gray" FontSize="Small" 
+                RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1, Constant=-82}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.05}"/>
                     </RelativeLayout>
                 </ViewCell>
             </DataTemplate>

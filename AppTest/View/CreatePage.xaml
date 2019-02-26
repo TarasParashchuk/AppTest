@@ -12,13 +12,13 @@
             <Editor x:Name="Detail" Text="{Binding detail_task}" />
             <Label Text="Время начала" FontSize="Medium" Font="Bold,20" />
             <StackLayout Orientation="Horizontal">
-                <DatePicker x:Name="Start_Date" Date="{Binding start_date}" MinimumDate="{Binding Source={x:Static sys:DateTime.Today}}"/>
-                <TimePicker x:Name="Start_Time" Time="{Binding start_time}" />
+                <DatePicker x:Name="Start_Date" Date="{Binding start_date}" MinimumDate="{Binding Source={x:Static sys:DateTime.Today}}" Format="dd.MM.yyyy"/>
+                <TimePicker x:Name="Start_Time" Time="{Binding start_time }" Format="HH:mm"/>
             </StackLayout>
             <Label Text="Время окончания" FontSize="Medium" Font="Bold,20" />
             <StackLayout Orientation="Horizontal">
-                <DatePicker x:Name="End_Date" Date="{Binding end_date}" MinimumDate="{Binding Source={x:Reference Start_Date}, Path=Date}"/>
-                <TimePicker x:Name="End_Time" Time="{Binding end_time}" />
+                <DatePicker x:Name="End_Date" Date="{Binding end_date}" MinimumDate="{Binding Source={x:Reference Start_Date}, Path=Date}" Format="dd.MM.yyyy"/>
+                <TimePicker x:Name="End_Time" Time="{Binding end_time}" Format="HH:mm"/>
             </StackLayout>
         </StackLayout>
         </ScrollView>

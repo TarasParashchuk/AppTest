@@ -7,6 +7,7 @@
         <ListView x:Name="Category" ItemsSource="{Binding ListItems}"
             CachingStrategy="RecycleElement"
               SeparatorVisibility="None" 
+              SelectionMode="None"
               HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>

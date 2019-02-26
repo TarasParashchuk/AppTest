@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using AppTest.Model;
@@ -29,7 +28,7 @@ namespace AppTest.SqliteDB
         {
             return database.Get<T>(id);
         }
-
+        /*
         public T GetLast<T>() where T : new()
         {
             return database.Table<T>().Last();
@@ -38,7 +37,7 @@ namespace AppTest.SqliteDB
         public int DeleteItem<T>(int id) where T : new()
         {
             return database.Delete<T>(id);
-        }
+        }*/
 
         public void DeleteAll<T>() where T : new()
         {

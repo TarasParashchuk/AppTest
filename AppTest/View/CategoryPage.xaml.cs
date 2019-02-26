@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppTest.ViewModel;
+﻿using AppTest.ViewModel;
 using Xamarin.Forms;
 
 namespace AppTest

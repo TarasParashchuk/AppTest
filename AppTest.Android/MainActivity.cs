@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
+using Plugin.LocalNotifications;
 
 namespace AppTest.Droid
 {
@@ -21,6 +22,7 @@ namespace AppTest.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init(false);
+            LocalNotificationsImplementation.NotificationIconId = Resource.Drawable.outline_add;
             LoadApplication(new App());
         }
     }

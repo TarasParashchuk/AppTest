@@ -1,5 +1,5 @@
-﻿using System;
-using AppTest.SqliteDB;
+﻿using AppTest.SqliteDB;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,7 +8,8 @@ namespace AppTest
 {
     public partial class App : Application
     {
-        public const string nameDB = "DBfsdfasjnnvdccfjtest.db";
+        public const string nameDB = "DBAppTest.db";
+        public const string url = "http://200.7.98.16/xamarin_test/categories.json";
         public static SqliteRepository database;
         public static SqliteRepository Database
         {
@@ -25,7 +26,6 @@ namespace AppTest
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new MainPage());
         }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Input;
 using AppTest.Model;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 
 namespace AppTest.ViewModel
@@ -14,6 +16,11 @@ namespace AppTest.ViewModel
         public ICommand SaveCommand { protected set; get; }
         public ModelTask data_task;
         public ModelMessage data_message;
+
+        private TimeSpan start_t;
+        private TimeSpan end_t;
+        private DateTime start_d;
+        private DateTime end_d;
 
         public ViewModelCreatePage(string name_category)
         {
@@ -49,55 +56,45 @@ namespace AppTest.ViewModel
             }
         }
 
-        public string start_date
+        public DateTime start_date
         {
-            get { return data_task.start_date; }
+            get { return start_d; }
             set
             {
-                if (data_task.start_date != value)
-                {
-                    data_task.start_date = value;
-                    OnPropertyChanged("start_date");
-                }
+                start_d = value;
+                OnPropertyChanged("start_date");
             }
         }
 
-        public string start_time
+        public TimeSpan start_time
         {
-            get { return data_task.start_time; }
+            get { return start_t; }
             set
-            {
-                if (data_task.start_time != value)
-                {
-                    data_task.start_time = value;
-                    OnPropertyChanged("start_time");
-                }
+            { 
+                start_t = value;
+                end_t = value;
+                OnPropertyChanged("end_time");
+                OnPropertyChanged("start_time");
             }
         }
 
-        public string end_date
+        public DateTime end_date
         {
-            get { return data_task.end_date; }
+            get { return end_d; }
             set
             {
-                if (data_task.end_date != value)
-                {
-                    data_task.end_date = value;
-                    OnPropertyChanged("end_date");
-                }
+                end_d = value;
+                OnPropertyChanged("end_date");
             }
         }
 
-        public string end_time
+        public TimeSpan end_time
         {
-            get { return data_task.end_time; }
+            get { return end_t; }
             set
             {
-                if (data_task.end_time != value)
-                {
-                    data_task.end_time = value;
-                    OnPropertyChanged("end_time");
-                }
+                end_t = value;
+                OnPropertyChanged("end_time");
             }
         }
 
@@ -105,14 +102,18 @@ namespace AppTest.ViewModel
         {
             if (!String.IsNullOrEmpty(data_task.name_task))
             {
+                data_task.start_time = start_t.ToString(@"hh\:mm");
+                data_task.end_time = end_t.ToString(@"hh\:mm");
+                data_task.start_date = start_d.ToString(@"dd.MM.yyyy");
+                data_task.end_date = end_d.ToString(@"dd.MM.yyyy");
                 App.Database.SaveItem(data_task);
 
-                var last_item = App.Database.GetLast<ModelTask>();
-                data_message.name_task = last_item.name_task;
-
+                data_message.name_task = data_task.name_task;
                 var date_time = DateTime.Now;
                 data_message.current_date = date_time.ToShortDateString() + "\n" + date_time.ToShortTimeString();
                 App.database.SaveItem(data_message);
+
+                CrossLocalNotifications.Current.Show("Создано новое задание " + data_task.name_task, "Категория: " + data_message.name_category);
             }
 
             Navigation.PopAsync();
